@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
+//use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,16 @@ use Illuminate\Http\Request;
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:api');
+
+Route::get('article', 'ArticleController@articles');
+Route::get('article/{id}', 'ArticleController@articlesById');
+Route::get('article/find/{name}', 'ArticleController@articlesByName');
+Route::get('article/find/{price_from}/{price_before}', 'ArticleController@articlesByPrice');
+Route::get('article/f/published', 'ArticleController@articlesPublished');
+Route::get('article/f/actual', 'ArticleController@articlesActual');
+Route::post('article', 'ArticleController@create');
+Route::put('article/{article}', 'ArticleController@edit');
+Route::delete('article/{article}', 'ArticleController@delete');
+
+Route::post('category', 'CategoryController@create');
+Route::delete('category/{category}', 'CategoryController@delete');

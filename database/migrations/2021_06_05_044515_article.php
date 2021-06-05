@@ -16,6 +16,7 @@ class Article extends Migration
         Schema::create('article', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->integer('price');
             $table->boolean('published');
             $table->boolean('deleted');
             //$table->timestamps();
