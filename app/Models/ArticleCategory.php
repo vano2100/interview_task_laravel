@@ -8,4 +8,7 @@ class ArticleCategory extends Model
 {
     //
     protected $table = "articlecategory";
+
+
+
 }

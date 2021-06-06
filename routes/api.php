@@ -28,6 +28,7 @@ Route::get('article/f/actual', 'ArticleController@articlesActual');
 Route::post('article', 'ArticleController@create');
 Route::put('article/{article}', 'ArticleController@edit');
 Route::delete('article/{article}', 'ArticleController@delete');
+Route::get('article/bycategory/{name}', 'ArticleController@articlesByCategory');
 
 Route::post('category', 'CategoryController@create');
 Route::delete('category/{category}', 'CategoryController@delete');

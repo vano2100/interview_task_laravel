@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use Illuminate\Support\Facades\DB;
 
 class ArticleController extends Controller
 {
@@ -15,6 +16,10 @@ class ArticleController extends Controller
     public function articlesById($id){
         return response()->json(Article::find($id), 200);
     }
+
+    public function articlesByCategory($name){
+        return response()->json(DB::select("SELECT a.id, a.name, a.published, a.deleted, a.price FROM article a JOIN articlecategory b ON a.id = b.article_id JOIN category c ON b.category_id = c.id WHERE c.name LIKE '%$name%'"), 200);
+    }    
 
     public function articlesByName($name){
         return response()->json(Article::where("name", "like", "%$name%")->get(), 200);
